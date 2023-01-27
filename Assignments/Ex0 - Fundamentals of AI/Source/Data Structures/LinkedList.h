@@ -5,8 +5,6 @@ namespace ufl_cap4053 {
     namespace fundamentals {
         template <class T> class LinkedList {
         private:
-            Node* start, end, curr;
-
             struct Node {
                 T element;
                 Node* next, prev;
@@ -15,7 +13,9 @@ namespace ufl_cap4053 {
                     prev = previous;
                     this->next = next;
                 }
-            }
+            };
+
+            Node* start, end, curr;
 
         public:
             LinkedList<T>() {
@@ -112,25 +112,36 @@ namespace ufl_cap4053 {
                     }
                 }
             }
+
+            class Iterator {
+            private:
+                Node* current;
+
+            public:
+                T operator*() const {
+                    return current->element;
+                }
+
+                Iterator& operator++() {
+                    current = current->next;
+                    if (current == nullptr)
+                        return LinkedList<T>::end();
+
+                }
+
+                bool operator==(Iterator const& rhs) {
+                    if (rhs.current->element == this->current->element)
+                        return true;
+                    return false;
+                }
+
+                bool operator!=(Iterator const& rhs) {
+                    if (this->current->element != rhs.current->element)
+                        return true;
+                    return false;
+                }
+            };
         };
         
-        template <class T> class LinkedList::Iterator {
-        public:
-            T operator*() const {
-
-            }
-
-            Iterator& operator++() {
-
-            }
-
-            bool operator==(Iterator const& rhs) {
-
-            }
-
-            bool operator!=(Iterator const& rhs) {
-
-            }
-        };
     }
 }  // namespace ufl_cap4053::fundamentals

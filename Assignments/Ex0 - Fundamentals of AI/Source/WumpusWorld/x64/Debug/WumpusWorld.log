@@ -1,0 +1,19 @@
+﻿  Behavior.cpp
+  Agent.cpp
+C:\Users\brady\OneDrive\Desktop\AI for Computer Games\student-materials\Assignments\Ex0 - Fundamentals of AI\Source\WumpusWorld\Game\Agent.cpp(48,11): error C2440: 'return': cannot convert from 'const char8_t [6]' to 'const char *'
+C:\Users\brady\OneDrive\Desktop\AI for Computer Games\student-materials\Assignments\Ex0 - Fundamentals of AI\Source\WumpusWorld\Game\Agent.cpp(48,11): message : Types pointed to are unrelated; conversion requires reinterpret_cast, C-style cast or parenthesized function-style cast
+C:\Users\brady\OneDrive\Desktop\AI for Computer Games\student-materials\Assignments\Ex0 - Fundamentals of AI\Source\WumpusWorld\Game\Agent.cpp(57,11): error C2440: 'return': cannot convert from 'const char8_t [5]' to 'const char *'
+C:\Users\brady\OneDrive\Desktop\AI for Computer Games\student-materials\Assignments\Ex0 - Fundamentals of AI\Source\WumpusWorld\Game\Agent.cpp(57,11): message : Types pointed to are unrelated; conversion requires reinterpret_cast, C-style cast or parenthesized function-style cast
+C:\Users\brady\OneDrive\Desktop\AI for Computer Games\student-materials\Assignments\Ex0 - Fundamentals of AI\Source\WumpusWorld\Game\Agent.cpp(59,11): error C2440: 'return': cannot convert from 'const char8_t [6]' to 'const char *'
+C:\Users\brady\OneDrive\Desktop\AI for Computer Games\student-materials\Assignments\Ex0 - Fundamentals of AI\Source\WumpusWorld\Game\Agent.cpp(59,11): message : Types pointed to are unrelated; conversion requires reinterpret_cast, C-style cast or parenthesized function-style cast
+C:\Users\brady\OneDrive\Desktop\AI for Computer Games\student-materials\Assignments\Ex0 - Fundamentals of AI\Source\WumpusWorld\Game\Agent.cpp(61,11): error C2440: 'return': cannot convert from 'const char8_t [5]' to 'const char *'
+C:\Users\brady\OneDrive\Desktop\AI for Computer Games\student-materials\Assignments\Ex0 - Fundamentals of AI\Source\WumpusWorld\Game\Agent.cpp(61,11): message : Types pointed to are unrelated; conversion requires reinterpret_cast, C-style cast or parenthesized function-style cast
+C:\Users\brady\OneDrive\Desktop\AI for Computer Games\student-materials\Assignments\Ex0 - Fundamentals of AI\Source\WumpusWorld\Game\Agent.cpp(63,11): error C2440: 'return': cannot convert from 'const char8_t [6]' to 'const char *'
+C:\Users\brady\OneDrive\Desktop\AI for Computer Games\student-materials\Assignments\Ex0 - Fundamentals of AI\Source\WumpusWorld\Game\Agent.cpp(63,11): message : Types pointed to are unrelated; conversion requires reinterpret_cast, C-style cast or parenthesized function-style cast
+C:\Users\brady\OneDrive\Desktop\AI for Computer Games\student-materials\Assignments\Ex0 - Fundamentals of AI\Source\WumpusWorld\Game\Agent.cpp(65,11): error C2440: 'return': cannot convert from 'const char8_t [7]' to 'const char *'
+C:\Users\brady\OneDrive\Desktop\AI for Computer Games\student-materials\Assignments\Ex0 - Fundamentals of AI\Source\WumpusWorld\Game\Agent.cpp(65,11): message : Types pointed to are unrelated; conversion requires reinterpret_cast, C-style cast or parenthesized function-style cast
+C:\Users\brady\OneDrive\Desktop\AI for Computer Games\student-materials\Assignments\Ex0 - Fundamentals of AI\Source\WumpusWorld\Game\Agent.cpp(47,3): warning C4390: ';': empty controlled statement found; is this the intent?
+  Behaviors.cpp
+  Game.cpp
+  World.cpp
+  Generating Code...
