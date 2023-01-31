@@ -1,13 +1,16 @@
+#include <iostream>
 
+using namespace std;
 
 // LinkedList class should go in the "ufl_cap4053::fundamentals" namespace!
 namespace ufl_cap4053 {
     namespace fundamentals {
-        template <class T> class LinkedList {
+        template <typename T> class LinkedList {
         private:
             struct Node {
                 T element;
-                Node* next, prev;
+                Node* next;
+                Node* prev;
                 Node(T element, Node* next, Node* previous) {
                     this->element = element;
                     prev = previous;
@@ -15,25 +18,79 @@ namespace ufl_cap4053 {
                 }
             };
 
-            Node* start, end, curr;
+            Node* start;
+            Node* stop;
+            Node* curr;
 
         public:
             LinkedList<T>() {
                 curr = nullptr;
                 start = nullptr;
-                end = nullptr;
+                stop = nullptr;
             }
 
+            ~LinkedList<T>() {
+                Node* current = start;
+                while (current != nullptr) {
+                    Node* temp = current->next;
+                    delete current;
+                    current = temp;
+                }
+            }
+
+            class Iterator {
+            private:
+                Node* current;
+
+                Node* endState;
+
+            public:
+                friend class LinkedList;
+
+                T operator*() const {
+                    //cout << "Element: " << current->element << " retrieved!\n";
+                    return current->element;
+                }
+
+                Iterator& operator++() {
+                    if (current->next != nullptr) {
+                        current = current->next;
+                        return *this;
+                    }
+                    current = nullptr;
+                    return *this;
+                }
+
+                bool operator==(Iterator const& rhs) {
+                    if (rhs.current->element == this->current->element)
+                        return true;
+                    return false;
+                }
+
+                bool operator!=(Iterator const& rhs) {
+                    cout << this->current << endl;
+                    if (this->current == rhs.current || this->current->element != rhs.current->element)
+                        return true;
+                    cout << "false";
+                    return false;
+                }
+            };
+
             Iterator begin() const {
-                return start;
+                Iterator iter = Iterator();
+                iter.current = start;
+                //cout << "BegiN: " << iter.current->element << endl;
+                return iter;
             }
 
             Iterator end() const {
-                return end;
+                Iterator iter = Iterator();
+                iter.current = nullptr;
+                return iter;
             }
 
             bool isEmpty() const {
-                if (start == nullptr && end == nullptr)
+                if (start == nullptr && stop == nullptr)
                     return true;
                 return false;
             }
@@ -44,17 +101,19 @@ namespace ufl_cap4053 {
             }
 
             T getBack() const {
-                Node back = *end;
+                Node back = *stop;
                 return back.element;
             }
 
             void enqueue(T element) {
                 //Add to front if first element
-                if (start == nullptr)
-                    start = Node(element, nullptr, nullptr);
+                if (start == nullptr) {
+                    start = new Node(element, nullptr, nullptr);
+                    stop = start;
+                }
                 else {
-                    Node* temp = end;
-                    end = Node(element, nullptr, temp);
+                    Node* temp = stop->prev;
+                    stop = new Node(element, nullptr, temp);
                 }
             }
 
@@ -66,10 +125,10 @@ namespace ufl_cap4053 {
             }
 
             void pop() {
-                Node* temp = end->prev;
+                Node* temp = stop->prev;
                 temp->next = nullptr;
-                delete end;
-                end = temp;
+                delete stop;
+                stop = temp;
             }
 
             void clear() {
@@ -113,34 +172,7 @@ namespace ufl_cap4053 {
                 }
             }
 
-            class Iterator {
-            private:
-                Node* current;
-
-            public:
-                T operator*() const {
-                    return current->element;
-                }
-
-                Iterator& operator++() {
-                    current = current->next;
-                    if (current == nullptr)
-                        return LinkedList<T>::end();
-
-                }
-
-                bool operator==(Iterator const& rhs) {
-                    if (rhs.current->element == this->current->element)
-                        return true;
-                    return false;
-                }
-
-                bool operator!=(Iterator const& rhs) {
-                    if (this->current->element != rhs.current->element)
-                        return true;
-                    return false;
-                }
-            };
+            
         };
         
     }
