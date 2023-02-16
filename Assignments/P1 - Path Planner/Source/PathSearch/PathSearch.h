@@ -3,6 +3,8 @@
 #include "../Framework/TileSystem/TileMap.h"
 #include <vector>
 
+using namespace std;
+
 namespace ufl_cap4053
 {
 	namespace searches
@@ -10,6 +12,13 @@ namespace ufl_cap4053
 		class PathSearch
 		{
 		// CLASS DECLARATION GOES HERE
+			private:
+				int startRow, startCol, goalRow, goalCol;
+				vector<Tile const*> path;
+				TileMap* map;
+				bool done;
+
+				bool areAdjacent(const Tile* lhs, const Tile* rhs);
 			public:
 				DLLEXPORT PathSearch(); // EX: DLLEXPORT required for public methods - see platform.h
 
