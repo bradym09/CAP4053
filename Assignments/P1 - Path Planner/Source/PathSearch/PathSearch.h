@@ -2,6 +2,7 @@
 #include "../Framework/TileSystem/Tile.h"
 #include "../Framework/TileSystem/TileMap.h"
 #include <vector>
+#include "../PriorityQueue.h"
 
 using namespace std;
 
@@ -14,6 +15,7 @@ namespace ufl_cap4053
 		// CLASS DECLARATION GOES HERE
 			private:
 				int startRow, startCol, goalRow, goalCol;
+				ufl_cap4053::PriorityQueue<Tile const*> pQ;
 				vector<Tile const*> path;
 				TileMap* map;
 				bool done;

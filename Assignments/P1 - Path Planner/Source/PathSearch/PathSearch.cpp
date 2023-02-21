@@ -10,13 +10,13 @@ namespace ufl_cap4053
 
 		//Checks if two tiles are adjacent
 		bool PathSearch::areAdjacent(const Tile* lhs, const Tile* rhs) {
-			inline int leftRow = lhs->getRow();
-			inline int leftCol = lhs->getColumn();
-			inline int rightRow = rhs->getRow();
-			inline int rightCol = rhs->getColumn();
+			int leftRow = lhs->getRow();
+			int leftCol = lhs->getColumn();
+			int rightRow = rhs->getRow();
+			int rightCol = rhs->getColumn();
 
-			inline int rowDist = rightRow - leftRow;
-			inline int colDist = rightCol - leftCol;
+			int rowDist = rightRow - leftRow;
+			int colDist = rightCol - leftCol;
 
 			//Odd row
 			if (leftRow % 2 == 1) {
@@ -60,6 +60,8 @@ namespace ufl_cap4053
 			goalRow = 0;
 			goalCol = 0;
 
+			pQ = 
+
 			done = false;
 		}
 
@@ -68,7 +70,7 @@ namespace ufl_cap4053
 		}
 
 		void PathSearch::load(TileMap* _tileMap) {
-			_tileMap->resetTileDrawing();
+			//_tileMap->resetTileDrawing();
 		}
 
 		void PathSearch::initialize(int startRow, int startCol, int goalRow, int goalCol) {
@@ -95,7 +97,7 @@ namespace ufl_cap4053
 
 		bool PathSearch::isDone() const {
 
-			return isDone;
+			return done;
 		}
 
 		std::vector<Tile const*> const PathSearch::getSolution() const {
