@@ -16,11 +16,12 @@ namespace ufl_cap4053
 			private:
 				int startRow, startCol, goalRow, goalCol;
 				ufl_cap4053::PriorityQueue<Tile const*> pQ;
-				vector<Tile const*> path;
+				vector<int const&> path;
 				TileMap* map;
 				bool done;
 
 				bool areAdjacent(const Tile* lhs, const Tile* rhs);
+				static bool greaterThan(const int &lhs, const int &rhs);
 			public:
 				DLLEXPORT PathSearch(); // EX: DLLEXPORT required for public methods - see platform.h
 

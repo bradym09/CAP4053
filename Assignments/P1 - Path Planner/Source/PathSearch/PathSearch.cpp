@@ -52,15 +52,20 @@ namespace ufl_cap4053
 			return false;
 		}
 
+		//Is left > right?
+		bool PathSearch::greaterThan(const int& lhs, const int& rhs) {
+			return false;
+		}
+
 		//PUBLIC FUNCTIONS
 
-		PathSearch::PathSearch() {
+		PathSearch::PathSearch() : pQ(PriorityQueue(greaterThan) {
 			startRow = 0;
 			startCol = 0;
 			goalRow = 0;
 			goalCol = 0;
 
-			pQ = 
+			//pQ = PriorityQueue(greaterThan);
 
 			done = false;
 		}
@@ -70,7 +75,9 @@ namespace ufl_cap4053
 		}
 
 		void PathSearch::load(TileMap* _tileMap) {
-			//_tileMap->resetTileDrawing();
+			_tileMap->resetTileDrawing();
+
+
 		}
 
 		void PathSearch::initialize(int startRow, int startCol, int goalRow, int goalCol) {
