@@ -1,0 +1,6 @@
+C:\Users\brady\Desktop\AI for Games\CAP4053\Assignments\Ex2 - Reversi\Source\CoreAI\bin\Debug\Core.dll
+C:\Users\brady\Desktop\AI for Games\CAP4053\Assignments\Ex2 - Reversi\Source\CoreAI\bin\Debug\Core.pdb
+C:\Users\brady\Desktop\AI for Games\CAP4053\Assignments\Ex2 - Reversi\Source\CoreAI\obj\Debug\Core.csproj.AssemblyReference.cache
+C:\Users\brady\Desktop\AI for Games\CAP4053\Assignments\Ex2 - Reversi\Source\CoreAI\obj\Debug\Core.csproj.CoreCompileInputs.cache
+C:\Users\brady\Desktop\AI for Games\CAP4053\Assignments\Ex2 - Reversi\Source\CoreAI\obj\Debug\Core.dll
+C:\Users\brady\Desktop\AI for Games\CAP4053\Assignments\Ex2 - Reversi\Source\CoreAI\obj\Debug\Core.pdb
