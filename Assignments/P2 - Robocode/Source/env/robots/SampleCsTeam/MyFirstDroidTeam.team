@@ -1,0 +1,7 @@
+#Robocode robot team
+#Thu Apr 06 13:38:23 EDT 2023
+team.members=SampleCsTeam.MyFirstDroid,SampleCsTeam.MyFirstLeader
+team.author.name=
+robocode.version=1.9.3.3
+team.description=Sample team
+team.version=0
