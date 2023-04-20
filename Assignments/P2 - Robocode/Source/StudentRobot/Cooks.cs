@@ -21,7 +21,7 @@ namespace CAP4053.Student
 
         FSM fsm;
         OtherBot target;
-        int shotCounter, hitCounter, counterThreshold;
+        int shotCounter, hitCounter, ramCount, counterThreshold;
         Random rand;
 
         //Finite State Machine
@@ -119,26 +119,41 @@ namespace CAP4053.Student
                 mode = Mode.Charge;
                 robot = newRobot;
                 robot.hitCounter = 0;
+                robot.shotCounter = 0;
+                robot.ramCount = 0;
             }
 
             public override void Update(ref ScannedRobotEvent scan, ref HitByBulletEvent hit)
             {
                 Console.WriteLine("CHARGE");
+                double targetEnergy = 0;
                 //Scan robot event
                 if (scan != null)
                 {
                     robot.SetTurnRight(scan.Bearing);
+                    robot.SetTurnGunRight(scan.Bearing + (robot.Heading - robot.GunHeading));
                     robot.SetAhead(scan.Distance);
+                    targetEnergy = scan.Energy;
+                    robot.FireShots(scan.Distance);
                 }
 
                 //Hit robot event
                 if (hit != null)
                 {
-                    if (robot.hitCounter == robot.counterThreshold)
-                        robot.fsm.Transition(mode, Mode.Dodge);
+                    //if (robot.hitCounter == robot.counterThreshold)
+                      //  robot.fsm.Transition(mode, Mode.Retreat);
                 }
 
+                //Start dodging after ram (if target is still healthy)
+                if (robot.ramCount == 1 && targetEnergy > 40)
+                    robot.fsm.Transition(mode, Mode.Dodge);
+
                 robot.FireShots(robot.target.GetDistance());
+
+                if (robot.shotCounter == robot.counterThreshold)
+                {
+                    robot.fsm.Transition(mode, Mode.Intel);
+                }
             }
 
             public override void Exit()
@@ -150,15 +165,15 @@ namespace CAP4053.Student
         class Dodge : State
         {
             Mode mode;
-            double dodge;
+            double dodgeDist, dodgeCount, dodgeScale;
             public override void Start(Cooks newRobot)
             {
                 mode = Mode.Dodge;
                 robot = newRobot;
                 robot.hitCounter = 0;
-                dodge = robot.rand.Next(100, 200);
-                robot.SetAhead(dodge);
-                robot.SetTurnRight(90);
+                dodgeScale = 1;
+                dodgeDist = robot.rand.Next(100, 200);
+                robot.SetAhead(dodgeDist * dodgeScale);
             }
 
             public override void Update(ref ScannedRobotEvent scan, ref HitByBulletEvent hit)
@@ -170,14 +185,43 @@ namespace CAP4053.Student
                 //Scanned Robot Event
                 if (scan != null)
                 {
-                    if (robot.target.GetDistance() > 200)
+                    //Keep within 150-200 pixels
+                    if (scan.Distance < 150 || scan.Distance > 200)
+                    {
+                        robot.SetTurnRight(scan.Bearing);
+
+                        //If I'm close to a wall, move passed the enemy
+                        if (robot.X < 150 || robot.X > robot.BattleFieldWidth - 150 || robot.Y < 150 || robot.Y > robot.BattleFieldHeight - 150)
+                            robot.SetAhead(150 + scan.Distance);
+
+                        //Otherwise, back up
+                        else
+                            robot.SetBack(150 - scan.Distance);
+                    }
+                    else
                     {
                         robot.SetTurnRight(scan.Bearing + 90);
+
+                        //Start another dodge once current is finished
+                        if (robot.DistanceRemaining == 0)
+                        {
+                            dodgeCount++;
+                            dodgeScale *= -1;
+                            dodgeDist = robot.rand.Next(100, 200);
+                            robot.SetAhead(dodgeDist * dodgeScale);
+                        }
                     }
-                    robot.SetTurnGunRight(scan.Bearing + (robot.Heading - robot.GunHeading));
+
+                    //Aim and fire at target's current location
+                    double gunAngle = scan.Bearing + (robot.Heading - robot.GunHeading);
+                    //if (gunAngle > 180)
+                        robot.SetTurnGunRight(gunAngle);
                     robot.FireShots(scan.Distance);
 
-                    if (robot.DistanceRemaining == 0)
+                    //Charge again when enemy energy goes low
+                    if (scan.Energy < 30 && robot.Energy > 40)
+                    //Charge again after 3 dodges
+                    //if (dodgeCount == 3)
                         robot.fsm.Transition(mode, Mode.Charge);
                 }
 
@@ -185,7 +229,7 @@ namespace CAP4053.Student
                 //Hit By Bullet Event
                 if (hit != null)
                 {
-                    if (robot.hitCounter == robot.counterThreshold && robot.Energy < 60)
+                    if (robot.Energy < 30)
                         robot.fsm.Transition(mode, Mode.Retreat);
                 }
                 
@@ -227,6 +271,8 @@ namespace CAP4053.Student
                 robot.SetTurnLeft(turnRadius);
                 robot.SetBack(200);
 
+                robot.Execute();
+
                 turnRadius *= -1;
 
                 if (robot.Time - startTime >= 3)
@@ -246,19 +292,20 @@ namespace CAP4053.Student
             {
                 mode = Mode.Intel;
                 robot = newRobot;
+
+                Console.WriteLine("Scanning...");
+                robot.SetTurnRadarRight(double.PositiveInfinity);
             }
 
             public override void Update(ref ScannedRobotEvent scan, ref HitByBulletEvent hit)
             {
-                Console.WriteLine("Scanning...");
-                robot.SetTurnRadarRight(double.PositiveInfinity);
 
                 if (scan != null)
                 {
                     Console.WriteLine("Found one!");
                     robot.SetTurnRight(scan.Bearing);
                     robot.SetTurnGunRight(scan.Bearing + (robot.Heading - robot.GunHeading));
-                    //robot.SetTurnRadarRight(-robot.RadarTurnRemaining);
+                    robot.SetTurnRadarRight(-robot.RadarTurnRemaining);
                     robot.fsm.Transition(mode, Mode.Charge);
                 }
             }
@@ -448,15 +495,17 @@ namespace CAP4053.Student
                 power = (Rules.MAX_BULLET_POWER);
             else if (distance < 200)
                 power = (Rules.MAX_BULLET_POWER / 3 * 2);
-            else if (distance < 300)
-                power = (Rules.MAX_BULLET_POWER / 2);
             else if (distance < 400)
+                power = (Rules.MAX_BULLET_POWER / 2);
+            else if (distance < 600)
                 power = (Rules.MAX_BULLET_POWER / 3);
             else
-                power = 0;
+                power = (Rules.MAX_BULLET_POWER / 4);
 
             if (power != 0)
                 SetFire(power);
+
+            shotCounter++;
 
             Execute();
 
@@ -468,8 +517,9 @@ namespace CAP4053.Student
 
             double shotAngle = Math.Atan((futureY - Y) / (futureX - X));
             TurnGunRight(shotAngle);
-            Fire(power);
-            TurnGunLeft(shotAngle);
+            SetFire(power);
+
+            Execute();
             */
         }
 
@@ -584,10 +634,10 @@ namespace CAP4053.Student
             //Back(100);
         }
 
-        public override void OnHitWall(HitWallEvent e)
+        public override void OnHitRobot(HitRobotEvent e)
         {
-            //double bearing = e.Bearing;
-            //TurnRight(-bearing);
+            if (e.Name == target.Name())
+                ramCount++;
         }
     }
 }
