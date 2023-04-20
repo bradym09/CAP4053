@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\brady\\OneDrive\\Desktop\\AI for Computer Games\\student-materials\\Assignments\\P2 - Robocode\\Source\\StudentRobot\\StudentRobot.csproj": {}
+    "C:\\Users\\brady\\Desktop\\AI for Games\\CAP4053\\Assignments\\P2 - Robocode\\Source\\StudentRobot\\StudentRobot.csproj": {}
   },
   "projects": {
-    "C:\\Users\\brady\\OneDrive\\Desktop\\AI for Computer Games\\student-materials\\Assignments\\P2 - Robocode\\Source\\StudentRobot\\StudentRobot.csproj": {
+    "C:\\Users\\brady\\Desktop\\AI for Games\\CAP4053\\Assignments\\P2 - Robocode\\Source\\StudentRobot\\StudentRobot.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\brady\\OneDrive\\Desktop\\AI for Computer Games\\student-materials\\Assignments\\P2 - Robocode\\Source\\StudentRobot\\StudentRobot.csproj",
+        "projectUniqueName": "C:\\Users\\brady\\Desktop\\AI for Games\\CAP4053\\Assignments\\P2 - Robocode\\Source\\StudentRobot\\StudentRobot.csproj",
         "projectName": "MyTeam",
-        "projectPath": "C:\\Users\\brady\\OneDrive\\Desktop\\AI for Computer Games\\student-materials\\Assignments\\P2 - Robocode\\Source\\StudentRobot\\StudentRobot.csproj",
+        "projectPath": "C:\\Users\\brady\\Desktop\\AI for Games\\CAP4053\\Assignments\\P2 - Robocode\\Source\\StudentRobot\\StudentRobot.csproj",
         "packagesPath": "C:\\Users\\brady\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\brady\\OneDrive\\Desktop\\AI for Computer Games\\student-materials\\Assignments\\P2 - Robocode\\Source\\StudentRobot\\obj\\",
+        "outputPath": "C:\\Users\\brady\\Desktop\\AI for Games\\CAP4053\\Assignments\\P2 - Robocode\\Source\\StudentRobot\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\brady\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -39,7 +39,7 @@
       "frameworks": {
         "net481": {
           "targetAlias": "net481",
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.200\\RuntimeIdentifierGraph.json"
         }
       }
     }

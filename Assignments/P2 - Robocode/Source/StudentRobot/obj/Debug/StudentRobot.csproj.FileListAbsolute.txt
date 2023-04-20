@@ -8,3 +8,13 @@ C:\Users\brady\OneDrive\Desktop\AI for Computer Games\student-materials\Assignme
 C:\Users\brady\OneDrive\Desktop\AI for Computer Games\student-materials\Assignments\P2 - Robocode\Source\StudentRobot\obj\Debug\StudentRobot.csproj.CopyComplete
 C:\Users\brady\OneDrive\Desktop\AI for Computer Games\student-materials\Assignments\P2 - Robocode\Source\StudentRobot\obj\Debug\MyTeam.dll
 C:\Users\brady\OneDrive\Desktop\AI for Computer Games\student-materials\Assignments\P2 - Robocode\Source\StudentRobot\obj\Debug\MyTeam.pdb
+C:\Users\brady\Desktop\AI for Games\CAP4053\Assignments\P2 - Robocode\Source\env\robots\MyTeam.dll
+C:\Users\brady\Desktop\AI for Games\CAP4053\Assignments\P2 - Robocode\Source\env\robots\MyTeam.pdb
+C:\Users\brady\Desktop\AI for Games\CAP4053\Assignments\P2 - Robocode\Source\StudentRobot\obj\Debug\StudentRobot.csproj.AssemblyReference.cache
+C:\Users\brady\Desktop\AI for Games\CAP4053\Assignments\P2 - Robocode\Source\StudentRobot\obj\Debug\StudentRobot.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\brady\Desktop\AI for Games\CAP4053\Assignments\P2 - Robocode\Source\StudentRobot\obj\Debug\StudentRobot.AssemblyInfoInputs.cache
+C:\Users\brady\Desktop\AI for Games\CAP4053\Assignments\P2 - Robocode\Source\StudentRobot\obj\Debug\StudentRobot.AssemblyInfo.cs
+C:\Users\brady\Desktop\AI for Games\CAP4053\Assignments\P2 - Robocode\Source\StudentRobot\obj\Debug\StudentRobot.csproj.CoreCompileInputs.cache
+C:\Users\brady\Desktop\AI for Games\CAP4053\Assignments\P2 - Robocode\Source\StudentRobot\obj\Debug\StudentRobot.csproj.CopyComplete
+C:\Users\brady\Desktop\AI for Games\CAP4053\Assignments\P2 - Robocode\Source\StudentRobot\obj\Debug\MyTeam.dll
+C:\Users\brady\Desktop\AI for Games\CAP4053\Assignments\P2 - Robocode\Source\StudentRobot\obj\Debug\MyTeam.pdb
